@@ -12,7 +12,11 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
+		String name=req.getParameter("uname");
+		String password=req.getParameter("password");
 		HttpSession session=req.getSession(true);
+		session.setAttribute("name",name);
+		session.setAttribute("password",password);
 		session.setAttribute("errmsg", "Invalid User Name");
 		session.setAttribute("errmsg1", "Invalid Password");	
 		resp.sendRedirect("login.jsp");
